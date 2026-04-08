@@ -2,7 +2,10 @@ import { GoogleGenAI } from "@google/genai";
 
 const getApiKey = () => {
   const key = process.env.GEMINI_API_KEY;
+  // const key = "AIzaSyBYnAS5-SN4xW2HEdwi5npP6GKB0QxgHrk"
+  console.log("print api key to console: ", key)
   if (!key || key === "undefined") return "";
+  // if (!key) return "";
   return key;
 };
 
@@ -21,7 +24,7 @@ export async function reviewCode(code: string, task: string) {
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-3.1-pro-preview",
+      model: "gemini-2.5-flash",
       contents: `You are a Senior Engineer at NAB (National Australia Bank). 
       Review the following Java code for the task: "${task}".
       
